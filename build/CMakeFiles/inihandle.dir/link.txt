@@ -1,0 +1,1 @@
+/usr/bin/g++   -g   CMakeFiles/inihandle.dir/main.cpp.o CMakeFiles/inihandle.dir/inihandle.cc.o CMakeFiles/inihandle.dir/common.cc.o  -o inihandle 
