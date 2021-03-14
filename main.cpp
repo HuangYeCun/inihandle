@@ -52,13 +52,18 @@ int main() {
   ini_handle.setValue("Test", "1 ");
   ini_handle.endGroup();
 
+  ini_handle.beginGroup("Dog");
+  ini_handle.setValue("Name", "Beifang");
+  ini_handle.setValue("Type", "tianyuan");
+  ini_handle.endGroup();
+
   //第二种设置方式
   //  ini_handle.setValue("Book/Name", "DDDDD");
   //  ini_handle.setValue("Book/Line", "11");
   //  ini_handle.setValue("Person/Sex", "Boy");
   //  ini_handle.setValue("Person/School", "Beiwai");
 
-  //  ini_handle.setValue("Dog/Name", "xiaohei");
+  ini_handle.setValue("Dog/Name", "baibai");
 
   vec = ini_handle.readINI();
   std::cout << "最终数据：" << std::endl;

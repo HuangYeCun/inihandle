@@ -104,32 +104,11 @@ std::string IniHandle::value(const std::string& key) const {
   return "";
 }
 
-// void IniHandle::writeINI() {
-//  //    pending_set_vec_
-//  //
-//  只能有一个(已有的key，在group中没有的key，没有group)，或者都在一个Group中的（有group和没有group）。
-//  //写入，如果已经有该Key，修改;如果没有该Key，添加
-//  if (pending_set_vec_.empty()) {
-//    return;
-//  }
-
-//  std::string file_str("");
-
-//  std::ifstream ifile;
-//  ifile.open(filename_);
-
-//  ifile.close();
-
-//  pending_set_vec_.clear();
-//}
-
 void IniHandle::writeINI() {
-  //写入，如果已经有该Key，修改;如果没有该Key，添加
+  //一次读INI文件遍历; 如果已经有该Key，修改;如果没有该Key，添加
   if (pending_set_vec_.empty()) {
     return;
   }
-
-  //处理第一个和最后一个Group
 
   std::string file_str("");
 
@@ -213,10 +192,13 @@ void IniHandle::writeINI() {
       }
     }
   }
+  ifile.close();
+
   //最后剩下的
   if (!pending_set_vec_.empty()) {
     for (iter = pending_set_vec_.begin(); iter != pending_set_vec_.end();) {
       if (old_root_name == iter->get_group()) {
+        //需要添加最后一个Group下面
         std::string line_data_new("");
         line_data_new = iter->get_key();
         line_data_new += "=";
@@ -251,13 +233,16 @@ void IniHandle::writeINI() {
     }
   }
 
-  ifile.close();
+  WriteFile(file_str);
+
+  pending_set_vec_.clear();
+}
+
+void IniHandle::WriteFile(const std::string& content) {
   //写入文件
   std::ofstream ofile;
   ofile.open(filename_);
   ofile.flush();
-  ofile << file_str;
+  ofile << content;
   ofile.close();
-
-  pending_set_vec_.clear();
 }

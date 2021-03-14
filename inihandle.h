@@ -36,6 +36,7 @@ class IniHandle {
 
  private:
   void writeINI();
+  void WriteFile(const std::string& content);
 
  private:
   std::string filename_;
