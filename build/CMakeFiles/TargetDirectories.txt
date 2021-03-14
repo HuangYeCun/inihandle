@@ -1,3 +1,0 @@
-/home/dong/Documents/workspace/inihandle/build/CMakeFiles/edit_cache.dir
-/home/dong/Documents/workspace/inihandle/build/CMakeFiles/rebuild_cache.dir
-/home/dong/Documents/workspace/inihandle/build/CMakeFiles/inihandle.dir
