@@ -8,10 +8,12 @@ IniHandle::IniHandle(const std::string& filename)
 IniHandle::~IniHandle() {}
 
 std::vector<IniNode> IniHandle::readINI() const {
+  std::vector<IniNode> ini_vec;
+
   std::ifstream ifile;
   ifile.open(filename_);
+  if (!ifile) return ini_vec;
 
-  std::vector<IniNode> ini_vec;
   std::string root_name("");
   std::string line_data("");
   while (getline(ifile, line_data)) {
@@ -110,10 +112,11 @@ void IniHandle::writeINI() {
     return;
   }
 
-  std::string file_str("");
-
   std::ifstream ifile;
   ifile.open(filename_);
+  if (!ifile) return;
+
+  std::string file_str("");
 
   std::string old_root_name("");
   std::string new_root_name("");
@@ -242,6 +245,8 @@ void IniHandle::WriteFile(const std::string& content) {
   //写入文件
   std::ofstream ofile;
   ofile.open(filename_);
+  if (!ofile) return;
+
   ofile.flush();
   ofile << content;
   ofile.close();

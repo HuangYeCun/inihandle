@@ -63,7 +63,7 @@ int main() {
   //  ini_handle.setValue("Person/Sex", "Boy");
   //  ini_handle.setValue("Person/School", "Beiwai");
 
-  ini_handle.setValue("Dog/Name", "baibai");
+  ini_handle.setValue("Dog/Name", "xiaohei");
 
   vec = ini_handle.readINI();
   std::cout << "最终数据：" << std::endl;
